@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table 5: NDA Record - Indian Railways</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; table-layout: fixed; position: relative; }
+        .col-sl { width: 40px; } .col-name { width: 160px; } .col-desig { width: 60px; }  
+        .col-datetime { width: 110px; } .col-reason { width: 160px; } 
+        .col-supr-n { width: 95px; } .col-supr-s { width: 85px; } .col-action { width: 70px; }
+
+        @media screen {
+            body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #e9ecef; margin: 0; padding: 10px 20px; color: #212529; }
+            .app-container { max-width: 1200px; margin: 0 auto; background: #ffffff; box-shadow: 0 4px 15px rgba(0,0,0,0.2); border-top: 5px solid #ff9933; position: relative; }
+            .ir-header { background-color: #003366; color: white; padding: 15px 30px; display: flex; align-items: center; border-bottom: 3px solid #f1c40f; }
+            .ir-logo { width: 60px; height: 60px; margin-right: 20px; background-color: white; border-radius: 50%; padding: 3px; box-shadow: 0 0 10px rgba(0,0,0,0.5); object-fit: contain; }
+            .ir-titles h1 { margin: 0; font-size: 26px; font-family: Arial, sans-serif; letter-spacing: 1.5px; text-transform: uppercase; }
+            .ir-titles p { margin: 3px 0 0 0; font-size: 14px; color: #e0e0e0; font-weight: 500; }
+            .system-info-bar { background-color: #f8f9fa; border-bottom: 1px solid #dee2e6; padding: 8px 30px; font-size: 13px; color: #495057; display: flex; justify-content: space-between; font-weight: bold; }
+            .controls { padding: 15px 30px; background: #ffffff; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e9ecef; }
+            .btn-group button, .btn-group a { padding: 8px 14px; margin-right: 5px; font-size: 12px; font-weight: bold; border: 1px solid transparent; border-radius: 4px; cursor: pointer; text-transform: uppercase; transition: 0.2s; text-decoration: none; display: inline-block; }
+            .home-btn { background: #6c757d; color: white; border-color: #5a6268; }
+            .add-btn { background: #0056b3; color: white; border-color: #004085; }
+            .save-btn { background: #17a2b8; color: white; border-color: #117a8b; } 
+            .print-btn { background: #28a745; color: white; border-color: #1e7e34; }
+            .clear-btn { background: #dc3545; color: white; border-color: #bd2130; }
+            .btn-group button:hover, .btn-group a:hover { opacity: 0.9; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+            #searchInput { padding: 8px 15px; width: 220px; border: 1px solid #ced4da; border-radius: 4px; outline: none; font-size: 14px; background-color: #f8f9fa; }
+            #searchInput:focus { border-color: #80bdff; background-color: #fff; box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25); }
+            .table-wrapper { padding: 20px 30px; overflow-x: auto; min-height: 400px; position: relative; }
+            th { background: #003366; color: #ffffff; padding: 12px 8px; font-size: 13px; text-transform: uppercase; border: 1px solid #dee2e6; text-align: center; }
+            td { padding: 6px; border: 1px solid #dee2e6; vertical-align: middle; background-color: #fcfcfc; }
+            td[contenteditable="true"] { background: #ffffff; border: 1px solid #ced4da !important; border-radius: 3px; outline: none; text-align: left; padding: 8px; min-height: 20px; display: block; margin: 2px; color: #000; font-family: Arial, sans-serif; }
+            td[contenteditable="true"]:focus { border-color: #ff9933 !important; background-color: #fffdf5; box-shadow: 0 0 4px rgba(255,153,51,0.4); }
+            .del-btn { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; padding: 5px 10px; border-radius: 3px; cursor: pointer; font-size: 12px; font-weight: bold; }
+            .ir-footer { background: #e9ecef; text-align: center; padding: 15px; font-size: 12px; color: #6c757d; border-top: 1px solid #dee2e6; }
+            .print-only-title, .print-only-subheader, .watermark { display: none; }
+            #toast { visibility: hidden; min-width: 250px; background-color: #28a745; color: #fff; text-align: center; border-radius: 4px; padding: 15px; position: fixed; z-index: 1000; left: 50%; bottom: 30px; font-size: 16px; font-weight: bold; transform: translateX(-50%); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+            #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
+            @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+            @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+        }
+
+        @media print {
+            body { font-family: 'Times New Roman', Times, serif !important; margin: 0 !important; padding: 0 !important; background-color: white !important; }
+            .app-container { box-shadow: none !important; border-top: none !important; }
+            .ir-header, .system-info-bar, .controls, .ir-footer, .no-print, .del-btn, #toast { display: none !important; }
+            .print-only-title { display: block; text-align: center; font-size: 18px; font-weight: bold; text-decoration: underline; margin: 10mm 0 2mm 0; color: black; }
+            .print-only-subheader { display: block; text-align: center; font-size: 14px; margin-bottom: 5mm; font-style: italic; color: black; }
+            .watermark { display: block; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.15; z-index: -1; width: 450px; height: 450px; pointer-events: none; }
+            .watermark img { width: 100%; height: 100%; object-fit: contain; }
+            .table-wrapper { padding: 0 !important; min-height: auto !important; position: relative; z-index: 1; }
+            th, td { border: 1px solid black !important; padding: 8px 4px !important; text-align: center !important; font-size: 14px !important; color: black !important; background: transparent !important; display: table-cell !important; }
+            th { text-transform: none !important; font-weight: bold !important; }
+            td[contenteditable="true"] { text-align: left !important; padding-left: 6px !important; border: none !important; box-shadow: none !important; background: transparent !important; margin: 0 !important; }
+            .col-action { display: none !important; }
+            @page { size: A4 portrait; margin: 10mm; }
+        }
+    </style>
+</head>
+<body>
+    <div id="toast">✅ Data Saved Successfully!</div>
+    <div class="app-container">
+        <header class="ir-header no-print">
+            <img src="images.jpeg" alt="Indian Railways Logo" class="ir-logo">
+            <div class="ir-titles">
+                <h1>Indian Railways</h1>
+                <p>Table 5: NDA Booking Portal | South Eastern Railway</p>
+            </div>
+        </header>
+
+        <div class="system-info-bar no-print">
+            <span id="currentDate">Date: --/--/----</span>
+            <span>Status: <span style="color: #28a745;">● Ready (Table 5)</span></span>
+        </div>
+
+        <div class="controls no-print">
+            <div class="btn-group">
+                <a href="index.html" class="home-btn">⬅️ Home</a>
+                <button class="add-btn" onclick="addRow()">+ Add</button>
+                <button class="save-btn" onclick="manualSave()">💾 Save</button>
+                <button class="print-btn" onclick="window.print()">🖨️ PDF</button>
+                <button class="clear-btn" onclick="clearAllData()">🗑️ Reset</button>
+            </div>
+            <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="🔍 Search...">
+        </div>
+
+        <div class="print-only-title">Table 5: Record of staff booked for NDA</div>
+        <div class="print-only-subheader">(To be provided by Branch officer)</div>
+
+        <div class="watermark">
+            <img src="images.jpeg" alt="IR Watermark">
+        </div>
+
+        <div class="table-wrapper">
+            <table id="ndaTable">
+                <thead>
+                    <tr>
+                        <th class="col-sl">Sl<br>No.</th>
+                        <th class="col-name">Name of staff</th>
+                        <th class="col-desig">Desig.</th>
+                        <th class="col-datetime">Date & time</th>
+                        <th class="col-reason">Reason</th>
+                        <th class="col-supr-n">Name Of<br>Supervisor</th>
+                        <th class="col-supr-s">Sign of<br>Supervisor</th>
+                        <th class="col-action no-print">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+
+        <div class="ir-footer no-print">
+            &copy; 2026 Designed for Internal Railway Record Management.
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('currentDate').innerText = "Date: " + new Date().toLocaleDateString('en-GB');
+        window.onload = loadTableData;
+
+        function addRow(name="", desig="", datetime="", reason="", suprN="", suprS="") {
+            const tbody = document.getElementById("tableBody");
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td class="sl-no" style="text-align:center; font-weight:bold;"></td>
+                <td><div contenteditable="true" oninput="autoSaveData()">${name}</div></td>
+                <td><div contenteditable="true" oninput="autoSaveData()">${desig}</div></td>
+                <td><div contenteditable="true" oninput="autoSaveData()">${datetime}</div></td>
+                <td><div contenteditable="true" oninput="autoSaveData()">${reason}</div></td>
+                <td><div contenteditable="true" oninput="autoSaveData()">${suprN}</div></td>
+                <td><div contenteditable="true" oninput="autoSaveData()">${suprS}</div></td>
+                <td class="col-action no-print" style="text-align:center;"><button class="del-btn" onclick="deleteRow(this)">Remove</button></td>
+            `;
+            tbody.appendChild(tr);
+            updateSerialNumbers();
+            autoSaveData();
+        }
+
+        function deleteRow(btn) { if(confirm("Delete this record?")) { btn.closest("tr").remove(); updateSerialNumbers(); autoSaveData(); } }
+        function updateSerialNumbers() { const rows = document.querySelectorAll("#tableBody tr"); let count = 1; rows.forEach(row => { if (row.style.display !== 'none') { row.querySelector(".sl-no").innerText = count++; } }); }
+        function filterTable() { const input = document.getElementById("searchInput").value.toUpperCase(); const rows = document.querySelectorAll("#tableBody tr"); rows.forEach(row => { const text = row.innerText.toUpperCase(); row.style.display = text.includes(input) ? "" : "none"; }); updateSerialNumbers(); }
+        
+        function autoSaveData() {
+            const rows = document.querySelectorAll("#tableBody tr");
+            const data = Array.from(rows).map(row => {
+                const cells = row.querySelectorAll("div[contenteditable='true']");
+                return { name: cells[0].innerText, desig: cells[1].innerText, datetime: cells[2].innerText, reason: cells[3].innerText, suprN: cells[4].innerText, suprS: cells[5].innerText };
+            });
+            localStorage.setItem("ndaAppRecordV4", JSON.stringify(data));
+        }
+
+        function manualSave() { autoSaveData(); var toast = document.getElementById("toast"); toast.className = "show"; setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000); }
+        
+        function loadTableData() { const data = JSON.parse(localStorage.getItem("ndaAppRecordV4") || "[]"); if (data.length) data.forEach(d => addRow(d.name, d.desig, d.datetime, d.reason, d.suprN, d.suprS)); else { for(let i=0; i<5; i++) addRow(); } }
+        
+        function clearAllData() { if(confirm("All data will be deleted! Proceed?")) { localStorage.removeItem("ndaAppRecordV4"); document.getElementById("tableBody").innerHTML = ""; for(let i=0; i<5; i++) addRow(); } }
+    </script>
+</body>
+</html>

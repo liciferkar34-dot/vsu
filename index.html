@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Railway Record Portal - Home</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #e9ecef; margin: 0; padding: 0; }
+        .ir-header { background-color: #003366; color: white; padding: 20px 30px; display: flex; align-items: center; border-bottom: 4px solid #f1c40f; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .ir-logo { width: 70px; height: 70px; margin-right: 20px; background-color: white; border-radius: 50%; padding: 4px; box-shadow: 0 0 10px rgba(0,0,0,0.5); object-fit: contain; }
+        .ir-titles h1 { margin: 0; font-size: 28px; letter-spacing: 1.5px; text-transform: uppercase; }
+        .ir-titles p { margin: 5px 0 0 0; font-size: 15px; color: #e0e0e0; }
+        
+        .container { max-width: 1000px; margin: 50px auto; text-align: center; }
+        .container h2 { color: #003366; margin-bottom: 30px; font-size: 24px; text-transform: uppercase; border-bottom: 2px solid #ff9933; display: inline-block; padding-bottom: 10px; }
+        
+        .card-container { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+        
+        .card { background: white; width: 280px; padding: 30px 20px; border-radius: 12px; box-shadow: 0 6px 15px rgba(0,0,0,0.1); border-top: 5px solid #003366; transition: 0.3s; text-decoration: none; color: #333; display: flex; flex-direction: column; align-items: center; }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 12px 20px rgba(0,0,0,0.15); border-top-color: #ff9933; }
+        .card-icon { font-size: 50px; margin-bottom: 15px; }
+        .card h3 { margin: 0 0 10px 0; font-size: 22px; color: #003366; }
+        .card p { font-size: 14px; color: #666; margin: 0; }
+        
+        .footer { text-align: center; padding: 20px; margin-top: 50px; color: #666; font-size: 13px; }
+    </style>
+</head>
+<body>
+
+    <header class="ir-header">
+        <img src="images.jpeg" alt="IR Logo" class="ir-logo">
+        <div class="ir-titles">
+            <h1>Indian Railways</h1>
+            <p>Master Record Management Portal | South Eastern Railway - Adra Division</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>Select a Form/Record to Manage</h2>
+        
+        <div class="card-container">
+            <a href="table7.html" class="card">
+                <div class="card-icon">🚂</div>
+                <h3>Table 7</h3>
+                <p>Record of staff booked for TA</p>
+            </a>
+
+            <a href="table5.html" class="card">
+                <div class="card-icon">⏱️</div>
+                <h3>Table 5</h3>
+                <p>Record of staff booked for NDA</p>
+            </a>
+
+            <a href="noc_form.html" class="card">
+                <div class="card-icon">📄</div>
+                <h3>NOC Form</h3>
+                <p>Application for Competitive Exam</p>
+            </a>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2026 Developed for Internal Railway Operations.
+    </div>
+
+</body>
+</html>

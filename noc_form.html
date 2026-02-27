@@ -1,0 +1,308 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOC Format - ADRA Division (1-Page Fit)</title>
+    <style>
+        /* =========================================
+           ১. সাধারণ স্টাইল (Web UI)
+           ========================================= */
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            color: #000;
+            background-color: #e9ecef;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .app-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border-top: 5px solid #003366;
+        }
+
+        .controls {
+            padding: 10px 20px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #dee2e6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .controls button, .controls a {
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .home-btn { background: #6c757d; color: white; }
+        .home-btn:hover { background: #5a6268; }
+        .print-btn { background: #28a745; color: white; }
+        .clear-btn { background: #dc3545; color: white; }
+
+        .document-area {
+            padding: 30px 40px;
+            font-size: 14px;
+            line-height: 1.3;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        td {
+            border: 1px solid #000;
+            padding: 6px;
+            vertical-align: top;
+        }
+
+        .edit-box {
+            outline: none;
+            width: 100%;
+            box-sizing: border-box;
+            min-height: 18px;
+            background-color: #f0f7ff;
+            border: 1px solid #80bdff;
+            border-radius: 3px;
+            padding: 2px 5px;
+        }
+        .edit-box:focus {
+            background-color: #fffdf5;
+            border-color: #ff9933;
+        }
+
+        .checkbox-group { display: flex; gap: 10px; flex-wrap: wrap; }
+        .checkbox-group label { display: flex; align-items: center; gap: 2px; cursor: pointer; }
+
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+        .fw-bold { font-weight: bold; }
+        .spacer-10 { margin-top: 10px; }
+        .spacer-20 { margin-top: 20px; }
+
+        #toast { visibility: hidden; min-width: 200px; background-color: #28a745; color: #fff; text-align: center; border-radius: 4px; padding: 10px; position: fixed; left: 50%; bottom: 30px; transform: translateX(-50%); z-index: 1000; }
+        #toast.show { visibility: visible; }
+
+        /* =========================================
+           ২. PRINT স্টাইল (1-Page Force Optimization)
+           ========================================= */
+        @media print {
+            * { margin: 0; padding: 0; box-sizing: border-box; }
+            body { background: #fff !important; padding: 0 !important; margin: 0 !important; font-size: 10.5px !important; line-height: 1.05 !important; }
+            @page { size: A4 portrait; margin: 5mm; }
+            .app-container { box-shadow: none !important; border: none !important; max-width: 100% !important; }
+            .controls, #toast { display: none !important; }
+            .document-area { padding: 0 !important; }
+            h3 { font-size: 11px !important; margin-bottom: 5px !important; padding-top: 5px !important; }
+            table { margin-top: 5px !important; }
+            td { padding: 2px 3px !important; font-size: 10.5px !important; border: 1px solid #000 !important; }
+            .edit-box { border: none !important; background-color: transparent !important; padding: 0 !important; min-height: 12px !important; display: inline-block; }
+            ol { margin-left: 15px !important; }
+            li { margin-bottom: 1px !important; }
+            .spacer-10, .spacer-20 { margin-top: 4px !important; }
+            .indent-text { text-indent: 20px !important; }
+            .pl-40 { padding-left: 20px !important; }
+            .official-box { border: 1px solid #000 !important; padding: 4px !important; margin-top: 8px !important; }
+            .sig-area { margin-top: 15px !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="toast">✅ Data Cleared!</div>
+
+    <div class="app-container">
+        <div class="controls no-print">
+            <a href="index.html" class="home-btn">⬅️ Home</a>
+            <button class="print-btn" onclick="window.print()">🖨️ Save as PDF</button>
+            <button class="clear-btn" onclick="clearData()">🗑️ Reset Form</button>
+        </div>
+
+        <div class="document-area">
+            
+            <h3 class="text-center" style="text-decoration: underline;">
+                APPLICATION FOR PERMISSION TO APPEAR IN THE COMPETITIVE EXAMINATION
+            </h3>
+
+            <div class="spacer-10">
+                To<br>
+                Sr. Divl. Personnel Officer<br>
+                S. E. Railway, Adra
+            </div>
+
+            <div class="spacer-10">Sir,</div>
+
+            <div class="text-center fw-bold spacer-10">(Through Proper Channel)</div>
+
+            <div class="fw-bold spacer-10 pl-40" style="padding-left: 40px;">
+                Sub: Request for issue of "No Objection Certificate" for Competitive Examination
+            </div>
+
+            <div class="spacer-10 indent-text" style="text-indent: 40px;">
+                I wish to appear in the Competitive Examination/Employment. Therefore, I request you to grant me 'No Objection Certificate'. My details are given below:-
+            </div>
+
+            <table>
+                <tr>
+                    <td width="5%">1.</td>
+                    <td width="22%">Name</td>
+                    <td colspan="4"><div class="edit-box" contenteditable="true" id="f_name"></div></td>
+                </tr>
+                <tr>
+                    <td>2.</td>
+                    <td>Father's Name</td>
+                    <td colspan="4"><div class="edit-box" contenteditable="true" id="f_fname"></div></td>
+                </tr>
+                <tr>
+                    <td>3.</td>
+                    <td>Caste</td>
+                    <td width="28%"><div class="edit-box" contenteditable="true" id="f_caste"></div></td>
+                    <td width="5%">4.</td>
+                    <td width="15%">Emp. No.</td>
+                    <td width="25%"><div class="edit-box" contenteditable="true" id="f_empno"></div></td>
+                </tr>
+                <tr>
+                    <td>5.</td>
+                    <td>Shop/Office</td>
+                    <td><div class="edit-box" contenteditable="true" id="f_shop"></div></td>
+                    <td>6.</td>
+                    <td>Designation</td>
+                    <td><div class="edit-box" contenteditable="true" id="f_desig"></div></td>
+                </tr>
+                <tr>
+                    <td>7.</td>
+                    <td>D.O.A.</td>
+                    <td><div class="edit-box" contenteditable="true" id="f_doa"></div></td>
+                    <td>8.</td>
+                    <td>D. O. B</td>
+                    <td><div class="edit-box" contenteditable="true" id="f_dob"></div></td>
+                </tr>
+                <tr>
+                    <td>9.</td>
+                    <td>Pay Band</td>
+                    <td><div class="edit-box" contenteditable="true" id="f_payband"></div></td>
+                    <td>10.</td>
+                    <td>Grade Pay</td>
+                    <td><div class="edit-box" contenteditable="true" id="f_gradepay"></div></td>
+                </tr>
+                <tr>
+                    <td>11.</td>
+                    <td>Under whom working</td>
+                    <td colspan="4"><div class="edit-box" contenteditable="true" id="f_under"></div></td>
+                </tr>
+                <tr>
+                    <td>12.</td>
+                    <td>Deptt.</td>
+                    <td colspan="4"><div class="edit-box" contenteditable="true" id="f_dept"></div></td>
+                </tr>
+                <tr>
+                    <td>13.</td>
+                    <td>Reason for obtaining Permission<br>(Examination/Post applying):</td>
+                    <td colspan="4"><div class="edit-box" contenteditable="true" id="f_reason"></div></td>
+                </tr>
+                <tr>
+                    <td>14.</td>
+                    <td>Previous NOC in the current<br>year. If any, mention details:</td>
+                    <td colspan="4"><div class="edit-box" contenteditable="true" id="f_prevnoc"></div></td>
+                </tr>
+                <tr>
+                    <td>15.</td>
+                    <td>Availing NOC for Examination in the<br>current year (Please Tick)</td>
+                    <td colspan="4">
+                        <div class="checkbox-group">
+                            <label><input type="checkbox"> 1<sup>st</sup> time</label>
+                            <label><input type="checkbox"> 2<sup>nd</sup> time</label>
+                            <label><input type="checkbox"> 3<sup>rd</sup> time</label>
+                            <label><input type="checkbox"> 4<sup>th</sup> time</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>16.</td>
+                    <td colspan="5">
+                        <div class="fw-bold" style="text-decoration: underline;">An undertaking by the employee for obtaining the Permission</div>
+                        <ol type="a" style="margin-top: 2px; padding-left: 15px;">
+                            <li>I will take of my own leave duly sanctioned by the appropriate Competent Authority, before proceeding/appearing in the examination, as the case may be.</li>
+                            <li>I do hereby declare that granting such permission will not affect or hamper my day to day official work. If, it will hamper, the permission would be withdrawn immediately.</li>
+                            <li>I will bear the whole expenses involved thereof for appearing in the examination.</li>
+                            <li>The permission in this regard is not guaranteed to release me, if I shall be selected by the other organization or outside Railways.</li>
+                            <li>No Criminal Case/DAR/Vig. is pending against me, which can debar me for obtaining such permission.</li>
+                            <li>I will abide by the general conditions of rules applicable herein by the Railways, from time to time.</li>
+                        </ol>
+                        <div class="fw-bold spacer-10">Encl:</div>
+                        <ol type="i" style="margin-top: 2px; padding-left: 15px;">
+                            <li>Photocopy of Notification.</li>
+                            <li>Photocopy of Online/Offline Registration clearly mentioning the various posts for which candidate is applying.</li>
+                            <li>Photocopy(s) of Previous NOC in current year (if any).</li>
+                        </ol>
+                    </td>
+                </tr>
+                <tr>
+                    <td>17.</td>
+                    <td>Mobile Number of Employee:</td>
+                    <td colspan="4"><div class="edit-box" contenteditable="true" id="f_mobile"></div></td>
+                </tr>
+            </table>
+
+            <div class="sig-area" style="display: flex; justify-content: space-between; margin-top: 25px;">
+                <div style="display: flex; align-items: flex-end;">Date: <div class="edit-box" contenteditable="true" style="width: 120px; border-bottom: 1px dotted #000; background: transparent; border-top: none; border-left: none; border-right: none; border-radius: 0; margin-left: 5px;"></div></div>
+                <div class="text-right">
+                    <br>
+                    Signature of the Employee
+                </div>
+            </div>
+
+            <div class="official-box" style="border: 1px solid #000; padding: 10px; margin-top: 20px;">
+                <div class="text-center fw-bold" style="text-decoration: underline; margin-bottom: 5px;">FOR OFFICIAL USE ONLY</div>
+                
+                <ol style="margin-top: 0; padding-left: 20px; margin-bottom: 5px;">
+                    <li>The particulars have been duly filled in by the employee and the same is verified.</li>
+                    <li>No DAR case is pending against the above named employee.</li>
+                </ol>
+
+                <div class="spacer-10">
+                    Forwarded to <span class="fw-bold">Sr. DPO/ADRA</span> for necessary action please.
+                </div>
+
+                <div class="text-right spacer-20">
+                    (Signature of the Estt. Controlling Officer)<br>
+                    With Design. & stamp
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function clearData() {
+            if(confirm("Are you sure you want to clear all entered data?")) {
+                const editables = document.querySelectorAll('.edit-box');
+                editables.forEach(el => {
+                    if(el.id || el.style.borderBottom) { el.innerText = ""; }
+                });
+                
+                const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                checkboxes.forEach(cb => cb.checked = false);
+
+                var toast = document.getElementById("toast");
+                toast.className = "show";
+                setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+            }
+        }
+    </script>
+</body>
+</html>
